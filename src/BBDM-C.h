@@ -876,19 +876,19 @@ while ( 0 )
  *
  * \see BBDM_GET_TYPENAME
  */
-char *BBDM_getTypeName( void *self );
+const char *BBDM_getTypeName( const void *self );
 
 
 /*!
  * \brief returns the typename of the inner payload data
  */
-char *BBDM_getDataTypeName( void *self );
+const char *BBDM_getDataTypeName( const void *self );
 
 
 /*!
  * \brief returns the BBDM instance name
  */
-char *BBDM_getInstanceName( void *self );
+const char *BBDM_getInstanceName( const void *self );
 
 
 /*!
@@ -900,7 +900,7 @@ void BBDM_setInstanceName( void *self, const char *instanceName );
 /*!
  * \brief get BBDM time step
  */
-BaseI64 BBDM_getTimestep( void *self );
+BaseI64 BBDM_getTimestep( const void *self );
 
 
 /*!
@@ -934,7 +934,7 @@ int BBDM_copyData( void *self, const void *src );
 /*!
  * \brief get the payload properties of the inner data of a BBDM
  */
-void BBDM_getProperties( void *self, BBDMProperties *p );
+void BBDM_getProperties( const void *self, BBDMProperties *p );
 
 
 /*!

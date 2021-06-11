@@ -42,7 +42,7 @@ while( 0 )
 static BBDMFunction BBDM_getBBDMFunction( BBDM *self, char *functionName );
 
 
-char *BBDM_getTypeName( void *self )
+const char *BBDM_getTypeName( const void *self )
 {
     ANY_REQUIRE( self );
 
@@ -50,7 +50,7 @@ char *BBDM_getTypeName( void *self )
 }
 
 
-char *BBDM_getInstanceName( void *self )
+const char *BBDM_getInstanceName( const void *self )
 {
     BBDMGetInstanceNameFunc getInstanceNameFunc = (BBDMGetInstanceNameFunc)NULL;
 
@@ -76,7 +76,7 @@ void BBDM_setInstanceName( void *self, const char *instanceName )
 }
 
 
-BaseI64 BBDM_getTimestep( void *self )
+BaseI64 BBDM_getTimestep( const void *self )
 {
     BBDMGetTimestepFunc getTimestepFunc = (BBDMGetTimestepFunc)NULL;
 
@@ -129,7 +129,7 @@ int BBDM_copyData( void *self, const void *src )
 }
 
 
-void BBDM_getProperties( void *self, BBDMProperties *p )
+void BBDM_getProperties( const void *self, BBDMProperties *p )
 {
     BBDMGetPropertiesFunc getPropertiesFunc = (BBDMGetPropertiesFunc)NULL;
 
@@ -167,7 +167,7 @@ SerializeFunction BBDM_getSerializeFunctionPtr( void *self )
 }
 
 
-char *BBDM_getDataTypeName( void *self )
+const char *BBDM_getDataTypeName( const void *self )
 {
     char *bbdmType = (char *)NULL;
     char *bbdmPrefix = "BBDM";

@@ -98,7 +98,7 @@ bst_build_libraries("${SRC_FILES}" "${PROJECT_NAME}" "${BST_LIBRARIES_SHARED}")
 
 file(GLOB EXE_FILES examples/*.c examples/*.cpp)
 
-bst_build_executables("${EXE_FILES}" "${BST_LIBRARIES_SHARED};${PROJECT_NAME}")
+bst_build_executables("${EXE_FILES}" "${BST_LIBRARIES_SHARED}")
 
 
 if(EXISTS "${SIT}/External/cutest/1.5/lib/$ENV{MAKEFILE_PLATFORM}")
