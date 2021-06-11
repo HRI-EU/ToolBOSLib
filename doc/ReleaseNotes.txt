@@ -1,0 +1,21 @@
+
+                     RELEASE NOTES FOR TOOLBOSLIB 4.0.0
+
+
+
+NEW FEATURES
+============
+
+  - [TBCORE-2160] Traps.c: adapted to binutils 2.34 API change
+  - [TBCORE-2157] support Ubuntu 20.04 LTS ("focal64")
+
+
+CHANGES
+=======
+
+  - [TBCORE-2137] dual-licensing: distributed under GPLv3 or proprietary license
+  - [TBCORE-1940] MemorySerializer_openForWriting(): changed default serialization mode
+    (SERIALIZER_STREAMMODE_LOOP --> SERIALIZER_DEFAULT_MODE which is SERIALIZE_STREAMMODE_NORMAL)
+
+
+# EOF
