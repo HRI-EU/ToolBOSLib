@@ -1,0 +1,45 @@
+
+                     RELEASE NOTES FOR TOOLBOSLIB 4.0.1
+
+
+CHANGES
+=======
+
+  - [TBCORE-2015] dropped obsolete BBDM unittest-macros which made use of *_initFromString()
+  - [TBCORE-1943] added const-qualifier to certain BBDM helper functions:
+                  BaseI64 BBDM_getTimestep( const void *self );
+                  void BBDM_getProperties( const void *self, BBDMProperties *p );
+                  const char *BBDM_getDataTypeName( const void *self );
+                  const char *BBDM_getInstanceName( const void *self );
+                  const char *BBDM_getTypeName( const void *self );
+
+
+-----------------------------------------------------------------------------
+
+                     RELEASE NOTES FOR TOOLBOSLIB 4.0.0
+
+
+NEW FEATURES
+============
+
+  - [TBCORE-2197] BBDMTestTemplate.h: added macros for XML-based initialization
+  - [TBCORE-2160] Traps.c: adapted to binutils 2.34 API change
+  - [TBCORE-2157] support Ubuntu 20.04 LTS ("focal64")
+
+
+CHANGES
+=======
+
+  - [TBCORE-2137] dual-licensing: open-source GPLv3-variant available as well
+  - [TBCORE-1940] MemorySerializer_openForWriting(): changed default serialization mode
+    (SERIALIZER_STREAMMODE_LOOP --> SERIALIZER_DEFAULT_MODE which is SERIALIZE_STREAMMODE_NORMAL)
+
+
+-----------------------------------------------------------------------------
+
+
+ToolBOSLib 4.0.0 is based upon ToolBOSLib 3.1.12.
+You may continue reading the Release Notes there.
+
+
+# EOF

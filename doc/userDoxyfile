@@ -1,0 +1,5 @@
+PROJECT_NAME   = "ToolBOS Library"
+INPUT          = ../src ../doc
+SEARCHENGINE   = YES
+HAVE_DOT       = NO
+CLASS_DIAGRAMS = NO
