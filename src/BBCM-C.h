@@ -1050,12 +1050,12 @@ while (0)
   if( ( (__self)->instanceName == NULL ) ||                                      \
       ( Any_strcmp( ( (__self)->instanceName ), "" ) == 0 ) )                    \
   {                                                                              \
-    ANY_LOG( __debugLevel, __format, __msgType, ##__VA_ARGS__ );                 \
+    ANY_LOG( __debugLevel, __format, __msgType, __VA_ARGS__ );                   \
   }                                                                              \
   else                                                                           \
   {                                                                              \
     ANY_LOG( (__debugLevel), "%s: " __format, __msgType, (__self)->instanceName, \
-             ##__VA_ARGS__ );                                                    \
+             __VA_ARGS__ );                                                      \
   }                                                                              \
 }
 
