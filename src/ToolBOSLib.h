@@ -21,8 +21,6 @@
 /*!
  * \mainpage
  *
- * \image html ToolBOS-Logo.png
- *
  * The ToolBOS library is an O.S.-abstraction- and convenience layer to
  * quickly write portable applications.
  *
