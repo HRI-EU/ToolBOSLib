@@ -227,8 +227,8 @@ int main( int argc, char *argv[] )                                              
   src = __bbdmType__##_new();                                                           \
   dst = __bbdmType__##_new();                                                           \
                                                                                         \
-  __bbdmType__##_initFromXML( src, #__initXML__ );                                      \
-  __bbdmType__##_initFromXML( dst, #__initXML__ );                                      \
+  __bbdmType__##_initFromXML( src, (char*)__initXML__ );                                \
+  __bbdmType__##_initFromXML( dst, (char*)__initXML__ );                                \
                                                                                         \
   __bbdmType__##_copyData( dst, src );                                                  \
                                                                                         \
@@ -251,8 +251,8 @@ int main( int argc, char *argv[] )                                              
   src = __bbdmType__##_new();                                                           \
   dst = __bbdmType__##_new();                                                           \
                                                                                         \
-  __bbdmType__##_initFromXML( src, #__initXML__ );                                      \
-  __bbdmType__##_initFromXML( dst, #__initXML__ );                                      \
+  __bbdmType__##_initFromXML( src, (char*)__initXML__ );                                \
+  __bbdmType__##_initFromXML( dst, (char*)__initXML__ );                                \
                                                                                         \
   BBDM_copyData( dst, src );                                                            \
                                                                                         \
@@ -271,7 +271,7 @@ int main( int argc, char *argv[] )                                              
 {                                                                                       \
    __bbdmType__ *myBBDM = ( __bbdmType__*)NULL;                                         \
   myBBDM =  __bbdmType__##_new();                                                       \
-   __bbdmType__##_initFromXML( myBBDM, #__initXML__ );                                  \
+   __bbdmType__##_initFromXML( myBBDM, (char*)__initXML__ );                            \
                                                                                         \
    __bbdmType__##_setInstanceName( myBBDM, "myBBDM" );                                  \
   ANY_TRACE( 0, "%s",  __bbdmType__##_getInstanceName( myBBDM ) );                      \
@@ -292,7 +292,7 @@ int main( int argc, char *argv[] )                                              
    __bbdmType__ *myBBDM = ( __bbdmType__*)NULL;                                         \
                                                                                         \
   myBBDM =  __bbdmType__##_new();                                                       \
-   __bbdmType__##_initFromXML( myBBDM, #__initXML__ );                                  \
+   __bbdmType__##_initFromXML( myBBDM, (char*)__initXML__ );                            \
                                                                                         \
    __bbdmType__##_setTimestep( myBBDM, 12345 );                                         \
   result = __bbdmType__##_indirectGetTimestep( myBBDM );                                \
