@@ -26,6 +26,8 @@
 
 cmake_minimum_required(VERSION 2.8)
 
+project(ToolBOSLib)
+
 find_package(BuildSystemTools)
 
 set(BST_INSTALL_CATEGORY Libraries)
