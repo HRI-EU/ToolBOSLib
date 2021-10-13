@@ -221,7 +221,8 @@ typedef struct BaseC64
 
 #else
 
-#error("Please define __32BIT__ or __64BIT__")
+#define SIZE_PRINT       "z"
+#define SIZE_SCAN        "z"
 
 #endif
 
