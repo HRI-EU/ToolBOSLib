@@ -24,7 +24,6 @@
 
 #include <Any.h>
 #include <BaseTypes.h>
-#include <Base2DX.h>
 
 
 #ifdef __cplusplus
