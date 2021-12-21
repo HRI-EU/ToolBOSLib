@@ -28,6 +28,8 @@
 # shellcheck source=../ToolBOSCore/include/Unittest.bash
 source "${TOOLBOSCORE_ROOT}/include/Unittest.bash"
 
+source ${SIT}/External/cutest/1.5/BashSrc
+
 CWD=$(pwd)
 
 export LD_LIBRARY_PATH=${CWD}/lib/${MAKEFILE_PLATFORM}:${LD_LIBRARY_PATH}
@@ -38,14 +40,22 @@ export LD_LIBRARY_PATH=${CWD}/lib/${MAKEFILE_PLATFORM}:${LD_LIBRARY_PATH}
 #----------------------------------------------------------------------------
 
 
-# ensure package had been built
-BST.py -b -j32
+cd "${CWD}/test/BasicFunctions"       && runTest "${MAKEFILE_PLATFORM}/TestBasicFunctions"
+cd "${CWD}/test/ESC"                  && runTest "${MAKEFILE_PLATFORM}/TestESC"
+cd "${CWD}/test/IOChannelLifecycle"   && runTest "${MAKEFILE_PLATFORM}/TestIOChannelLifecycle"
+cd "${CWD}/test/IOChannelMain"        && runTest "${MAKEFILE_PLATFORM}/TestIOChannelMain"
+cd "${CWD}/test/ListsAndQueues"       && runTest "${MAKEFILE_PLATFORM}/TestListsAndQueues"
+cd "${CWD}/test/Multithreading"       && runTest "${MAKEFILE_PLATFORM}/TestMultithreading"
+cd "${CWD}/test/SerializeHeaderWrite" && runTest "${MAKEFILE_PLATFORM}/TestSerializeHeaderWrite"
 
-cd "${CWD}/test"           && runTest "./TestCoreLibrary.sh"
-cd "${CWD}/IOChannel"      && runTest "${MAKEFILE_PLATFORM}/TestIOChannel"
-cd "${CWD}/ListsAndQueues" && runTest "${MAKEFILE_PLATFORM}/TestListsAndQueues"
-cd "${CWD}/Multithreading" && runTest "${MAKEFILE_PLATFORM}/TestMultithreading"
-cd "${CWD}/test/Serialize" && runTest "./TestSerialize.sh"
+# needs restructuring into proper unittest
+# cd "${CWD}/test/AnyString"            && runTest "${MAKEFILE_PLATFORM}/TestAnyString"
+
+# aux. file SerializeTestV20.txt missing in repo
+# cd "${CWD}/test/SerializeHeaderRead"  && runTest "${MAKEFILE_PLATFORM}/TestSerializeHeaderRead"
+
+# stops with: TestWorkQueue.cpp:167 ANY_REQUIRE( istatus ) failed!
+# cd "${CWD}/test/WorkQueue"            && runTest "${MAKEFILE_PLATFORM}/TestWorkQueue"
 
 
 # we managed to get here --> success

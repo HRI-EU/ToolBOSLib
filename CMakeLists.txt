@@ -79,11 +79,11 @@ if(UNIX OR "$ENV{MAKEFILE_PLATFORM}" MATCHES "^mingw")
     add_definitions(-D_POSIX_C_SOURCE=199506L -D__USE_MISC
                     -D__USE_XOPEN -D__USE_GNU -D_GNU_SOURCE -D_XOPEN_SOURCE=600)
 
-  if("$ENV{MAKEFILE_PLATFORM}" MATCHES "^mingw" )
-    list(APPEND BST_LIBRARIES_SHARED ws2_32.lib wsock32.lib shlwapi.lib winmm.lib psapi.lib)
-  else()
-    list(APPEND BST_LIBRARIES_SHARED bfd dl iberty m pthread rt z)
-  endif()
+    if("$ENV{MAKEFILE_PLATFORM}" MATCHES "^mingw" )
+        list(APPEND BST_LIBRARIES_SHARED ws2_32.lib wsock32.lib shlwapi.lib winmm.lib psapi.lib)
+    else()
+        list(APPEND BST_LIBRARIES_SHARED bfd dl iberty m pthread rt z)
+    endif()
 
 else()
     list(APPEND SRC_FILES ${PTHREADS4W_SRCDIR}/pthread.c)
@@ -103,28 +103,30 @@ file(GLOB EXE_FILES examples/*.c examples/*.cpp)
 bst_build_executables("${EXE_FILES}" "${BST_LIBRARIES_SHARED}")
 
 
-if(EXISTS "${SIT}/External/cutest/1.5/lib/$ENV{MAKEFILE_PLATFORM}")
+if(EXISTS "$ENV{SIT}/External/cutest/1.5/lib/$ENV{MAKEFILE_PLATFORM}")
 
     bst_find_package(External/cutest/1.5)
 
-    message("building examples for platform=$ENV{MAKEFILE_PLATFORM}")
+    message("building tests for platform=$ENV{MAKEFILE_PLATFORM}")
 
-    set(EXE_FILES ${CMAKE_HOME_DIRECTORY}/test/General/TestGeneral.cpp
-                ${CMAKE_HOME_DIRECTORY}/test/ESC/TestESC.c
-                ${CMAKE_HOME_DIRECTORY}/test/IOChannel/TestIOChannel.cpp
-                ${CMAKE_HOME_DIRECTORY}/test/IOChannel/TestLifecycle.cpp
-                ${CMAKE_HOME_DIRECTORY}/test/ListsAndQueues/TestListsAndQueues.cpp
-                ${CMAKE_HOME_DIRECTORY}/test/Multithreading/TestMultithreading.cpp
-                ${CMAKE_HOME_DIRECTORY}/test/Serialize/HeaderV2_Read/TestHeaderV2_Read.cpp
-                ${CMAKE_HOME_DIRECTORY}/test/Serialize/HeaderV2_Write/TestHeaderV2_Write.cpp
-                ${CMAKE_HOME_DIRECTORY}/test/WorkQueue/TestWorkQueue.cpp)
+    set(EXE_FILES ${CMAKE_HOME_DIRECTORY}/test/AnyString/TestAnyString.c
+                  ${CMAKE_HOME_DIRECTORY}/test/BasicFunctions/TestBasicFunctions.cpp
+                  ${CMAKE_HOME_DIRECTORY}/test/ESC/TestESC.c
+                  ${CMAKE_HOME_DIRECTORY}/test/IOChannelLifecycle/TestIOChannelLifecycle.cpp
+                  ${CMAKE_HOME_DIRECTORY}/test/IOChannelMain/TestIOChannelMain.cpp
+                  ${CMAKE_HOME_DIRECTORY}/test/ListsAndQueues/TestListsAndQueues.cpp
+                  ${CMAKE_HOME_DIRECTORY}/test/Multithreading/TestMultithreading.cpp
+                  ${CMAKE_HOME_DIRECTORY}/test/SerializeHeaderRead/TestSerializeHeaderRead.cpp
+                  ${CMAKE_HOME_DIRECTORY}/test/SerializeHeaderWrite/TestSerializeHeaderWrite.cpp
+                  ${CMAKE_HOME_DIRECTORY}/test/WorkQueue/TestWorkQueue.cpp)
 
     bst_build_executables("${EXE_FILES}" "${BST_LIBRARIES_SHARED}")
 
 else()
 
-    message("skipping examples (CuTest not found for $ENV{MAKEFILE_PLATFORM})")
+    message("skipping tests (CuTest not found for $ENV{MAKEFILE_PLATFORM})")
 
 endif()
+
 
 # EOF

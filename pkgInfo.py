@@ -33,16 +33,17 @@ install          = [ 'external' ]
 delete = []
 
 for platform in getPlatformNames():
-    delete.append( 'test/ESC/'                        + platform )
-    delete.append( 'test/General/'                    + platform )
-    delete.append( 'test/IOChannel/'                  + platform )
-    delete.append( 'test/ListsAndQueues/'             + platform )
-    delete.append( 'test/Multithreading/'             + platform )
-    delete.append( 'test/Serialize/General/'          + platform )
-    delete.append( 'test/Serialize/HeaderV2_Read/'    + platform )
-    delete.append( 'test/Serialize/HeaderV2_Write/'   + platform )
-    delete.append( 'test/Serialize/Overhead/'         + platform )
-    delete.append( 'test/WorkQueue/'                  + platform )
+    delete.append( 'test/AnyString/'            + platform )
+    delete.append( 'test/BasicFunctions/'       + platform )
+    delete.append( 'test/ESC/'                  + platform )
+    delete.append( 'test/IOChannelLifecycle/'   + platform )
+    delete.append( 'test/IOChannelMain/'        + platform )
+    delete.append( 'test/ListsAndQueues/'       + platform )
+    delete.append( 'test/Multithreading/'       + platform )
+    delete.append( 'test/SerializeGeneral/'     + platform )
+    delete.append( 'test/SerializeHeaderRead/'  + platform )
+    delete.append( 'test/SerializeHeaderWrite/' + platform )
+    delete.append( 'test/WorkQueue/'            + platform )
 
 usePatchlevels   = True
 
