@@ -100,6 +100,11 @@ bst_build_libraries("${SRC_FILES}" "${PROJECT_NAME}" "${BST_LIBRARIES_SHARED}")
 
 file(GLOB EXE_FILES examples/*.c examples/*.cpp)
 
+# TBCORE-2269  examples/AnyLogCPP.cpp is known not to compile for Windows
+if("$ENV{MAKEFILE_PLATFORM}" STREQUAL "windows-amd64-vs2017")
+    LIST(REMOVE_ITEM EXE_FILES "${CMAKE_HOME_DIRECTORY}/examples/AnyLogCPP.cpp")
+endif()
+
 bst_build_executables("${EXE_FILES}" "${BST_LIBRARIES_SHARED}")
 
 
