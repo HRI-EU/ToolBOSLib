@@ -51,6 +51,8 @@
 #define BBDMTESTTEMPLATE_CODE_XML( __bbdmType__, __initXML__ )                          \
 int main( int argc, char *argv[] )                                                      \
 {                                                                                       \
+  (void) argv[argc-1];                                                                  \
+                                                                                        \
   __bbdmType__  *outBBDM        = __bbdmType__##_new();                                 \
   __bbdmType__  *inBBDM         = __bbdmType__##_new();                                 \
   __bbdmType__  *cBBDM          = __bbdmType__##_new();                                 \
@@ -221,6 +223,8 @@ int main( int argc, char *argv[] )                                              
 #define BBDMTESTTEMPLATE_COPYDATAFUNC_CODE_XML( __bbdmType__, __initXML__ )             \
 int main( int argc, char *argv[] )                                                      \
 {                                                                                       \
+  (void) argv[argc-1];                                                                  \
+                                                                                        \
   __bbdmType__ *src = (__bbdmType__*)NULL;                                              \
   __bbdmType__ *dst = (__bbdmType__*)NULL;                                              \
                                                                                         \
@@ -245,6 +249,8 @@ int main( int argc, char *argv[] )                                              
 #define BBDMTESTTEMPLATE_INDIRECTCOPYDATAFUNC_CODE_XML( __bbdmType__, __initXML__ )     \
 int main( int argc, char *argv[] )                                                      \
 {                                                                                       \
+  (void) argv[argc-1];                                                                  \
+                                                                                        \
   __bbdmType__ *src = (__bbdmType__*)NULL;                                              \
   __bbdmType__ *dst = (__bbdmType__*)NULL;                                              \
                                                                                         \
@@ -269,6 +275,8 @@ int main( int argc, char *argv[] )                                              
 #define BBDMTESTTEMPLATE_INSTANCENAME_CODE_XML( __bbdmType__, __initXML__ )             \
 int main( int argc, char *argv[] )                                                      \
 {                                                                                       \
+  (void) argv[argc-1];                                                                  \
+                                                                                        \
    __bbdmType__ *myBBDM = ( __bbdmType__*)NULL;                                         \
   myBBDM =  __bbdmType__##_new();                                                       \
    __bbdmType__##_initFromXML( myBBDM, (char*)__initXML__ );                            \
@@ -288,6 +296,8 @@ int main( int argc, char *argv[] )                                              
 #define BBDMTESTTEMPLATE_GETTIMESTEPFUNC_CODE_XML( __bbdmType__, __initXML__ )          \
 int main( int argc, char *argv[] )                                                      \
 {                                                                                       \
+  (void) argv[argc-1];                                                                  \
+                                                                                        \
   signed long int result = 0;                                                           \
    __bbdmType__ *myBBDM = ( __bbdmType__*)NULL;                                         \
                                                                                         \
