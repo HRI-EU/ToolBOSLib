@@ -82,7 +82,7 @@ if(UNIX OR "$ENV{MAKEFILE_PLATFORM}" MATCHES "^mingw")
     if("$ENV{MAKEFILE_PLATFORM}" MATCHES "^mingw" )
         list(APPEND BST_LIBRARIES_SHARED ws2_32.lib wsock32.lib shlwapi.lib winmm.lib psapi.lib)
     else()
-        list(APPEND BST_LIBRARIES_SHARED bfd dl iberty m pthread rt z)
+        list(APPEND BST_LIBRARIES_SHARED bfd dl iberty m pthread rt)
     endif()
 
 else()
