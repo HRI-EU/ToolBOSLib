@@ -42,11 +42,22 @@ buildWindows:
     image: dmz-gitlab.honda-ri.de:5050/gitlabrunner/buildcontainers/hri-eu-wine:latest
     script:
         - ./ci-buildWindows.sh
+    artifacts:
+        paths:
+            - lib
+            - test
 
-test:
+testLinux:
     stage: test
+    needs: [buildLinux]
     script:
-        - ./ci-test.sh
+        - ./ci-testLinux.sh
+
+testWindows:
+    stage: test
+    needs: [buildWindows]
+    script:
+        - ./ci-testWindows.sh
 
 # known not to work, f.i. many checkers fail
 #
