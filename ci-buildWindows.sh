@@ -20,18 +20,17 @@
 #
 
 
-# BashSrc files need to be ready first, see TBCORE-2267
-# set -euxo pipefail
+set -eo pipefail
 
-source "/hri/sit/latest/DevelopmentTools/ToolBOSCore/4.0/BashSrc"
-source "${SIT}/DevelopmentTools/ToolBOSPluginWindows/6.0/BashSrc"
+source "/hri/sit/latest/DevelopmentTools/ToolBOSCore/4.2/BashSrc"
+source "${SIT}/DevelopmentTools/ToolBOSPluginWindows/8.0/BashSrc"
 source "${SIT}/External/anaconda3/envs/common/3.9/BashSrc"
-source "${SIT}/External/CMake/3.2/BashSrc"
+source "${SIT}/External/CMake/3.26/BashSrc"
 
 WINEPREFIX=$(mktemp -d -t Wine-XXXXXXXXXX)
 export WINEPREFIX
 
-BST.py --build --platform windows-amd64-vs2017
+BST.py --build --platform windows-amd64-vs2017 --jobs 8
 
 
 # EOF
