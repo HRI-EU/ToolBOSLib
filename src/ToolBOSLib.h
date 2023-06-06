@@ -69,6 +69,12 @@
 #include <Serialize.h>
 #include <WorkQueue.h>
 
+#if defined(__windows__)
+#define TOOLBOSLIBRARY "ToolBOSLib-GPLv3.4.0.dll"
+#else
+#define TOOLBOSLIBRARY "libToolBOSLib-GPLv3.so"
+#endif
+
 #endif
 
 

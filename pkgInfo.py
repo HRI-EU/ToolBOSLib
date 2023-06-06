@@ -22,9 +22,9 @@
 
 from ToolBOSCore.Platforms.Platforms import getPlatformNames
 
-name             = 'ToolBOSLib-GPLv3'
+name             = 'ToolBOSLib-GPLv3'            # also hardcoded in ToolBOSLib.h !
 
-version          = '4.0'
+version          = '4.0'                         # also hardcoded in ToolBOSLib.h !
 
 category         = 'Libraries'
 

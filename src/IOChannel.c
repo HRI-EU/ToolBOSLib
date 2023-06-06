@@ -53,6 +53,7 @@
 #include <DynamicLoader.h>
 #include <BerkeleySocketClient.h>
 #include <IOChannelReferenceValue.h>
+#include <ToolBOSLib.h>
 
 
 #define IOCHANNEL_VALID                       ( 0x1cb5d117 )
@@ -3815,7 +3816,7 @@ static int IOChannelPlugin_init( IOChannelPlugin *self, char *streamType )
         goto out;
     }
 
-    /* The symbol was not found, proceed to look for it in the libToolBOSCore library */
+    /* The symbol was not found, proceed to look for it within the library */
 
     self->libHandle = DynamicLoader_new();
     if( !self->libHandle )
@@ -3825,16 +3826,7 @@ static int IOChannelPlugin_init( IOChannelPlugin *self, char *streamType )
         goto out;
     }
 
-    /* Build platform specific libToolBOSCore library name */
-#if defined(__windows__)
-    Any_snprintf( libraryName, IOCHANNEL_INFOSTRING_MAXLEN,
-                "libToolBOSCore.%d.%d.dll",
-                TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#else
-    Any_snprintf( libraryName, IOCHANNEL_INFOSTRING_MAXLEN,
-                  "libToolBOSCore.so.%d.%d",
-                  TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#endif
+    Any_snprintf( libraryName, IOCHANNEL_INFOSTRING_MAXLEN, TOOLBOSLIBRARY );
 
     if( DynamicLoader_init( self->libHandle, libraryName ) != 0 )
     {
@@ -3871,18 +3863,8 @@ static int IOChannelPlugin_init( IOChannelPlugin *self, char *streamType )
         goto out;
     }
 
-    /* compose the library name */
-#if defined(__windows__)
-    Any_snprintf( libraryName, IOCHANNEL_INFOSTRING_MAXLEN,
-                  "libIOChannel%s.%d.%d.dll", streamType,
-                  TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#else
-    Any_snprintf( libraryName, IOCHANNEL_INFOSTRING_MAXLEN,
-                  "libIOChannel%s.so.%d.%d",
-                  streamType, TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#endif
+    Any_snprintf( libraryName, IOCHANNEL_INFOSTRING_MAXLEN, TOOLBOSLIBRARY );
 
-    /* compose the plugin name */
     Any_snprintf( pluginName, IOCHANNEL_INFOSTRING_MAXLEN, "IOChannel%sOps", streamType );
 
     if( DynamicLoader_init( self->libHandle, libraryName ) != 0 )

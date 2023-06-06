@@ -32,6 +32,7 @@
 
 
 #include <Serialize.h>
+#include <ToolBOSLib.h>
 
 
 #define SERIALIZE_VALID                           (0xc1d3adcc)
@@ -2738,7 +2739,7 @@ static bool SerializeFormatList_addFormat( Serialize *self,
         goto _addPublicSymbol;
     }
 
-    /* Search the symbol in the libToolBOSCore library */
+    /* Search the symbol within the library */
     libraryHandle = DynamicLoader_new();
 
     if( !libraryHandle )
@@ -2747,16 +2748,7 @@ static bool SerializeFormatList_addFormat( Serialize *self,
         goto exitLabel;
     }
 
-    /* Build platform specific libToolBOSCore library name */
-#if defined(__windows__)
-    status = Any_snprintf( libraryName, SERIALIZE_PLUGINNAME_MAXLEN,
-                           "libToolBOSCore.%d.%d.dll",
-                           TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#else
-    status = Any_snprintf( libraryName, SERIALIZE_PLUGINNAME_MAXLEN,
-                           "libToolBOSCore.so.%d.%d",
-                           TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#endif
+    status = Any_snprintf( libraryName, SERIALIZE_PLUGINNAME_MAXLEN, TOOLBOSLIBRARY );
 
     if( DynamicLoader_init( libraryHandle, libraryName ) != 0 )
     {
@@ -2767,8 +2759,8 @@ static bool SerializeFormatList_addFormat( Serialize *self,
         goto exitLabel;
     }
 
-    ANY_LOG( 7, "libToolBOSCore.so library opened, searching for symbol [%s].",
-             ANY_LOG_INFO, pluginName );
+    ANY_LOG( 7, "%s library opened, searching for symbol [%s].",
+             ANY_LOG_INFO, TOOLBOSLIBRARY, pluginName );
 
     plugin = (SerializeFormat *)DynamicLoader_getSymbolByName( libraryHandle, pluginName );
 
@@ -2779,37 +2771,15 @@ static bool SerializeFormatList_addFormat( Serialize *self,
     }
     else
     {
-        /* Couldn't find the symbol in the libToolBOSCore library, clean
-     * up after ourselves and keep looking */
+        /* Couldn't find the symbol within the library, clean up after ourselves and keep looking */
         DynamicLoader_clear( libraryHandle );
         DynamicLoader_delete( libraryHandle );
         libraryHandle = NULL;
     }
 
-    /* Build The Library Name */
     if( path != (char *)NULL)
     {
-#if defined(__windows__)
-        status = Any_snprintf( libraryName, SERIALIZE_PLUGINNAME_MAXLEN,
-                               "%s/libSerializeFormat%s.%d.%d.dll",
-                               path, format, TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#else
-        status = Any_snprintf( libraryName, SERIALIZE_PLUGINNAME_MAXLEN,
-                               "%s/libSerializeFormat%s.so.%d.%d",
-                               path, format, TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#endif
-    }
-    else
-    {
-#if defined(__windows__)
-        status = Any_snprintf( libraryName, SERIALIZE_PLUGINNAME_MAXLEN,
-                               "libSerializeFormat%s.%d.%d.dll",
-                               format, TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#else
-        status = Any_snprintf( libraryName, SERIALIZE_PLUGINNAME_MAXLEN,
-                               "libSerializeFormat%s.so.%d.%d",
-                               format, TOOLBOS_MAJVERSION, TOOLBOS_MINVERSION );
-#endif
+        status = Any_snprintf( libraryName, SERIALIZE_PLUGINNAME_MAXLEN, TOOLBOSLIBRARY );
     }
     ANY_REQUIRE( status > 0 );
 

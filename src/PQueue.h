@@ -166,7 +166,7 @@ PQueue *PQueue_new( void );
  *      abort();
  *    }
  *
- *    if ( PQueue_init( q, 100, "MemI8", "libToolBOSCore.so" ) )
+ *    if ( PQueue_init( q, 100, "MemI8", TOOLBOSLIBRARY ) )
  *    {
  *      ANY_LOG( 0, "Unable to initialize PQueue", ANY_LOG_FATAL );
  *      PQueue_delete( q );

@@ -31,14 +31,9 @@
 #include <PQueue.h>
 #include <PQueueArray.h>
 #include <Threads.h>
+#include <ToolBOSLib.h>
 
 #include <CuTest.h>
-
-#if defined(__windows__)
-#define TOOLBOSLIBRARY "ToolBOSLib.2.0.dll"
-#else
-#define TOOLBOSLIBRARY "libToolBOSLib.so"
-#endif
 
 
 /*---------------------------------------------------------------------------*/
