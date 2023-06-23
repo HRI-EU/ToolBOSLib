@@ -47,7 +47,7 @@ for platform in getPlatformNames():
 
 usePatchlevels   = True
 
-patchlevel       = 10
+patchlevel       = 6
 
 sqLevel          = 'advanced'
 

@@ -1,4 +1,79 @@
 
+                     RELEASE NOTES FOR TOOLBOSLIB 4.0.6
+
+
+CHANGES
+=======
+
+  - [#2] ToolBOS.h now defines TOOLBOSLIBRARY constant, to handle GPLv3 variant
+  - linking against zlib apparently not needed
+
+
+INTERNAL
+========
+
+  - updated Windows build-toolchain versions + minimal testsuite for Windows
+
+
+-----------------------------------------------------------------------------
+
+                     RELEASE NOTES FOR TOOLBOSLIB 4.0.5
+
+
+CHANGES
+=======
+
+  - [TBCORE-2236] BBDMTestTemplate.h adjustments to remove compilation warnings
+
+
+INTERNAL
+========
+
+  - [TBCORE-2232] initial GitLab CI configuration
+  - [TBCORE-2232] restructured testprograms for CI
+
+
+-----------------------------------------------------------------------------
+
+                     RELEASE NOTES FOR TOOLBOSLIB 4.0.4
+
+
+CHANGES
+=======
+
+  - [TBCORE-2235] BaseTypes.h: define fallbacks for SIZE_{PRINT,SCAN}
+
+
+FIXED BUGS
+==========
+
+  - [TBCORE-2235] Base2DX.h: removed self-inclusion
+
+
+-----------------------------------------------------------------------------
+
+                     RELEASE NOTES FOR TOOLBOSLIB 4.0.3
+
+
+CHANGES
+=======
+
+  - [TBCORE-2229] BBDMTestTemplate.h: aligned macro token-pasting for consistency reasons
+
+
+-----------------------------------------------------------------------------
+
+                     RELEASE NOTES FOR TOOLBOSLIB 4.0.2
+
+
+CHANGES
+=======
+
+  - [TBCORE-1645] BBCM_LOG: removed variadic macro arguments to avoid compiler warnings
+
+
+-----------------------------------------------------------------------------
+
                      RELEASE NOTES FOR TOOLBOSLIB 4.0.1
 
 
