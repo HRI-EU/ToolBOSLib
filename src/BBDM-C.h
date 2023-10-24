@@ -546,6 +546,8 @@ while( 0 )
                                                                         \
         LIBXML_TEST_VERSION;                                            \
                                                                         \
+        ANY_REQUIRE( __xmlString )                                      \
+                                                                        \
         __len = strlen( __xmlString );                                  \
         __doc = xmlReadMemory( __xmlString, __len,                      \
                                "__placeholder__.xml", NULL, 0 );        \
