@@ -22,7 +22,15 @@
 
 set -eo pipefail
 
-source "/hri/sit/latest/DevelopmentTools/ToolBOSCore/4.2/BashSrc"
+if [[ "$#" -eq 0 ]] # no argument supplied, using default
+then
+    TOOLBOSCORE_VERSION="4.2"
+else
+    TOOLBOSCORE_VERSION="$1"
+fi
+
+# shellcheck source=/hri/sit/latest/DevelopmentTools/ToolBOSCore/4.2/BashSrc
+source "/hri/sit/latest/DevelopmentTools/ToolBOSCore/${TOOLBOSCORE_VERSION}/BashSrc"
 source "${SIT}/DevelopmentTools/ToolBOSPluginWindows/8.0/BashSrc"
 source "${SIT}/External/anaconda3/envs/common/3.9/BashSrc"
 source "${SIT}/External/CMake/3.26/BashSrc"

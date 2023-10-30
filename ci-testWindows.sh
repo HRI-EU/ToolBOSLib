@@ -22,7 +22,16 @@
 
 set -euxo pipefail
 
-source "/hri/sit/latest/DevelopmentTools/ToolBOSCore/4.2/BashSrc"
+if [[ "$#" -eq 0 ]] # no argument supplied, using default
+then
+    TOOLBOSCORE_VERSION="4.2"
+else
+    TOOLBOSCORE_VERSION="$1"
+fi
+
+# shellcheck source=/hri/sit/latest/DevelopmentTools/ToolBOSCore/4.2/BashSrc
+source "/hri/sit/latest/DevelopmentTools/ToolBOSCore/${TOOLBOSCORE_VERSION}/BashSrc"
+
 
 test -f lib/windows-amd64-vs2017/libToolBOSLib-GPLv3.4.0.lib
 test -f lib/windows-amd64-vs2017/ToolBOSLib-GPLv3.4.0.dll

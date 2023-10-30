@@ -20,11 +20,18 @@
 #
 
 
-# BashSrc files need to be ready first, see TBCORE-2267
-# set -euxo pipefail
+if [[ "$#" -eq 0 ]] # no argument supplied, using default
+then
+    TOOLBOSCORE_VERSION="4.2"
+else
+    TOOLBOSCORE_VERSION="$1"
+fi
 
-source /hri/sit/latest/DevelopmentTools/ToolBOSCore/4.0/BashSrc
-source ${SIT}/External/anaconda3/envs/common/3.9/BashSrc
+# shellcheck source=/hri/sit/latest/DevelopmentTools/ToolBOSCore/4.2/BashSrc
+source "/hri/sit/latest/DevelopmentTools/ToolBOSCore/${TOOLBOSCORE_VERSION}/BashSrc"
+source "${SIT}/External/anaconda3/envs/common/3.9/BashSrc"
+
+set -euxo pipefail
 
 BST.py --build
 
