@@ -30,13 +30,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-
-#if defined(__cplusplus)
-#include <iostream>
-#include <iomanip>
-#include <string>
-#endif
-
 #else
 
 #if !defined(__mingw__)
@@ -55,6 +48,12 @@
  */
 #include <stdarg.h>
 
+#endif
+
+#if defined(__cplusplus)
+#include <iostream>
+#include <iomanip>
+#include <string>
 #endif
 
 #include <AnyStdBool.h>
