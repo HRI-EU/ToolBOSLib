@@ -1,4 +1,22 @@
 
+                     RELEASE NOTES FOR TOOLBOSLIB 4.0.7
+
+
+CHANGES
+=======
+
+  - [#5] 🛡 check parameters in BBDM_INITXML_PARSE_BEGIN
+
+
+INTERNAL
+========
+
+  - [#3] 🔧 Use same ToolBOSCore version for CI jobs
+  - [#1] 🔧 fixed compilation of AnyLogCPP.cpp on Windows
+
+
+-----------------------------------------------------------------------------
+
                      RELEASE NOTES FOR TOOLBOSLIB 4.0.6
 
 
